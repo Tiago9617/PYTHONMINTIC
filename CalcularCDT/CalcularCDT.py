@@ -22,8 +22,6 @@ def CDT(usuario: str, capital: int, tiempo: int):
         valor_total = capital - valor_a_perder
         return f"Para el usuario {usuario} La cantidad de dinero a recibir, según el monto inicial {capital} para un tiempo de {tiempo} meses es: {valor_total}"
 
-print(CDT("AB1012", 1000000, 3)) 
-print(CDT("ER3366", 650000, 2)) 
 
 if __name__ == "__main__":
 
