@@ -79,7 +79,7 @@ ventas2=([
 def AutoPartes(ventas:list):
     dict = {} 
     for i in range(len(ventas)):
-        dict[i] = ventas[i]
+        dict[i] = [ventas[i]]
     return dict
 def consultaRegistro(ventas,idProducto):
     nuevoDict = {}
@@ -91,7 +91,24 @@ def consultaRegistro(ventas,idProducto):
         respuesta = "No hay registro de venta de ese producto"
     else:
         for i in nuevoDict:
-            respuesta += "Producto consultado : {} Descripción {} #Parte {} Cantidad vendida {} Stock {} Comprador {} Documento {} Fecha Venta {}\n".format(ventas[i][0][0],ventas[i][0][1],ventas[i][0][2],ventas[i][0][3],ventas[i][0][4],ventas[i][0][5],ventas[i][0][6],ventas[i][0][7])      
+            def AutoPartes(ventas:list):
+    dict = {} 
+    for i in range(len(ventas)):
+        dict[i] = [ventas[i]]
+    return dict
+
+def consultaRegistro(ventas,idProducto):
+    nuevoDict = {}
+    respuesta= ""
+    for i in ventas:
+        if ventas[i][0][0] == idProducto:
+            nuevoDict[i] = ventas[i]
+    if len(nuevoDict) == 0:
+        respuesta = "No hay registro de venta de ese producto"
+    else:
+        for i in nuevoDict:
+            respuesta += "Producto consultado : {}  Descripción  {}  #Parte  {}  Cantidad vendida  {}  Stock  {}  Comprador {}  Documento  {}  Fecha Venta  {}\n".format(ventas[i][0][0],ventas[i][0][1],ventas[i][0][2],ventas[i][0][3],ventas[i][0][4],ventas[i][0][5],ventas[i][0][6],ventas[i][0][7])      
+        
     return print(respuesta)
                
 if __name__ == "__main__":
@@ -102,5 +119,5 @@ if __name__ == "__main__":
     print(AutoPartes(ventas1),"\n\n")
     print(AutoPartes(ventas2),"\n\n")"""
     consultaRegistro(AutoPartes(ventas),2010)
-    ##consultaRegistro(AutoPartes(ventas1),2001)
-    ##consultaRegistro(AutoPartes(ventas2),9852)
+    consultaRegistro(AutoPartes(ventas1),2001)
+    consultaRegistro(AutoPartes(ventas2),9852)
