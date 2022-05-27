@@ -81,21 +81,7 @@ def AutoPartes(ventas:list):
     for i in range(len(ventas)):
         dict[i] = [ventas[i]]
     return dict
-def consultaRegistro(ventas,idProducto):
-    nuevoDict = {}
-    respuesta= ""
-    for i in ventas:
-        if ventas[i][0][0] == idProducto:
-            nuevoDict[i] = ventas[i]      
-    if len(nuevoDict) == 0:
-        respuesta = "No hay registro de venta de ese producto"
-    else:
-        for i in nuevoDict:
-            def AutoPartes(ventas:list):
-    dict = {} 
-    for i in range(len(ventas)):
-        dict[i] = [ventas[i]]
-    return dict
+
 
 def consultaRegistro(ventas,idProducto):
     nuevoDict = {}
