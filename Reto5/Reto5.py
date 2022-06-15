@@ -38,13 +38,16 @@ rutaFileCsv ='https://github.com/luisguillermomolero/MisionTIC2022_2/blob/master
 ##rutaFileCsv="main=xlsx"
 def listaPeliculas(rutaFileCsv: str) -> str:
     root, extension = os.path.splitext(rutaFileCsv)
-    
+    global dict
     if "csv" in extension:#devuelve true si la cadena se encuentra
         try:
             f=r.get(rutaFileCsv).content
             dataSet=pd.read_csv(io.StringIO(f.decode('utf-8')))
-            
-            print(dataSet.pivot_table())
+            dict = dict(pd.Series(["Country", "Language", "Gross Earnings"]))
+            print("{:<8}   {:<8}   {:<8}".format(dict[0], dict[1], dict[2]))
+            for fila in range(10 +1):
+                print("{:<8}   {:<8}   {:<8}".format(dataSet["Country"][fila], dataSet["Language"][fila], dataSet["Gross Earnings"][fila]) )
+    
         except FileNotFoundError :
             print( "Error al leer el archivo de datos.")
     else:    
