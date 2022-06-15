@@ -29,6 +29,8 @@ Lista               Lista de valores indexados por ‘Country’ y ‘Languaje�
 """
 
 import pandas as pd
+import requests as r
+import io
 
 import os
 # ruta file csv
@@ -36,17 +38,17 @@ rutaFileCsv ='https://github.com/luisguillermomolero/MisionTIC2022_2/blob/master
 ##rutaFileCsv="main=xlsx"
 def listaPeliculas(rutaFileCsv: str) -> str:
     root, extension = os.path.splitext(rutaFileCsv)
-    print("ruta: ", root)
-    print("extension: ", extension)
-    print(extension.endswith(".csv"))
     
     if "csv" in extension:#devuelve true si la cadena se encuentra
-        pass
+        try:
+            f=r.get(rutaFileCsv).content
+            dataSet=pd.read_csv(io.StringIO(f.decode('utf-8')))
+            
+            print(dataSet.pivot_table())
+        except FileNotFoundError :
+            print( "Error al leer el archivo de datos.")
     else:    
         return print("extension no valida")
-    try:
-        pass
-    except FileNotFoundError :
-        print( "Error al leer el archivo de datos.")
+
 if __name__ == "__main__":
     listaPeliculas(rutaFileCsv)
